@@ -162,7 +162,7 @@ MonoBehaviour:
   SpawnPos: {x: 0, y: 7, z: 320}
   position: {x: 0, y: 0, z: 0}
   objectLength: 77
-  enemyPrefab: {fileID: 1176562875233168744, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
+  enemyPrefab: {fileID: 368256993668300402, guid: bf11820c930434f929e85b2a4d492122, type: 3}
   startDelay: 5
 --- !u!4 &614262104
 Transform:
