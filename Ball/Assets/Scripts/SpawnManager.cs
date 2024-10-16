@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class SpawnManager : MonoBehaviour
 {
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
     public GameObject[] halfpipePrefabs; // Liste mit allen Prefabs
     public GameObject halfpipeInstance; // zuletzt initialisierte Halfpipe
-    public Vector3 startSpawnPos; //SpawnPos für die ersten paar Halfpipes
-    public Vector3 SpawnPos; //Spawn Pos für alle weiteren Halfpipes
+    public Vector3 startSpawnPos; //SpawnPos fï¿½r die ersten paar Halfpipes
+    public Vector3 SpawnPos; //Spawn Pos fï¿½r alle weiteren Halfpipes
     private ObjectMovement objectMovementScript;
     public Vector3 position; //Position der Halfpipe Instanz
-    public float objectLength; //Länge der halfpipes
-
+    public float objectLength; //Lï¿½nge der halfpipes
 
     public GameObject enemyPrefab;
     public float startDelay;
+    
 
 
     void Start()
@@ -25,20 +31,15 @@ public class SpawnManager : MonoBehaviour
         SpawnStartHalfpipe(objectLength);
         SpawnStartHalfpipe(2*objectLength);
         halfpipeInstance = SpawnStartHalfpipe(3 * objectLength);
-        Debug.Log(objectLength);
-
         InvokeRepeating("SpawnRandomEnemy", startDelay, Random.Range(2, 5));
-
-
-
-
+        
     }
 
 
-    void Update()
+    public void SpawnPipe()
     {
         position = halfpipeInstance.transform.position;
-        if (position.z < startSpawnPos.z+224) //Wenn Halfpipe Pos bestimmten Punkt unterschreitet, generiere Neue.
+        if (position.z < startSpawnPos.z+224 ) //Wenn Halfpipe Pos bestimmten Punkt unterschreitet, generiere Neue.
         {
             halfpipeInstance = SpawnRandomHalfpipe();
         }

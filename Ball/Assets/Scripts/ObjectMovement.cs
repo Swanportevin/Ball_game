@@ -5,22 +5,21 @@ using UnityEngine;
 
 public class ObjectMovement : MonoBehaviour
 {
-    public float speed = 40;
-
-
     private Collider objectCollider;
     public Vector3 objectSize;
+    private SpawnManager SpawnManager;
+    private GameManager GameManager_script;
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-        //Berechnung der jeweiligen Länge der Halfpipes.
+        //Berechnung der jeweiligen Lï¿½nge der Halfpipes.
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         objectSize = renderer.bounds.size;
-        Debug.Log(objectSize);
-        
+        SpawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
     }
 
@@ -30,13 +29,14 @@ public class ObjectMovement : MonoBehaviour
         //Bewegung der Halfpipes.
         if (gameObject.CompareTag("Ground"))
         {
-            transform.Translate(Vector3.back * Time.deltaTime * speed);
+            transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed);
         }
         // Bewegung der Enemies.
         if (gameObject.CompareTag("Enemy"))
         {
-            transform.Translate(Vector3.down * Time.deltaTime * speed);
+            transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
         }
         
     }
+
 }

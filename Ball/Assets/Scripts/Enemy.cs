@@ -6,9 +6,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject enemy;
+    private GameManager GameManager_script;
     // Start is called before the first frame update
     void Start()
     {
+        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
         
     }
 
@@ -18,11 +20,12 @@ public class Enemy : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other) // Zerstört Player und Enemy bei Kollision.
+    void OnCollisionEnter(Collision other) // Zerstï¿½rt Player und Enemy bei Kollision.
     {
         enemy = other.gameObject;
         if (enemy.CompareTag("Enemy"))
         {
+            GameManager_script.GameOver();
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
