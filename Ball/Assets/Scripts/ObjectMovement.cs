@@ -7,7 +7,6 @@ public class ObjectMovement : MonoBehaviour
 {
     private Collider objectCollider;
     public Vector3 objectSize;
-    private SpawnManager SpawnManager;
     private GameManager GameManager_script;
 
 
@@ -18,8 +17,8 @@ public class ObjectMovement : MonoBehaviour
         //Berechnung der jeweiligen L�nge der Halfpipes.
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         objectSize = renderer.bounds.size;
-        SpawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        
 
     }
 
