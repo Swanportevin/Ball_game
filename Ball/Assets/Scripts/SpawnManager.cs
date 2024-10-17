@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public GameObject[] halfpipePrefabs; // Liste mit allen Prefabs
     public GameObject halfpipeInstance; // zuletzt initialisierte Halfpipe
+    public GameObject Dollar; //Dollar
     public Vector3 startSpawnPos; //SpawnPos f�r die ersten paar Halfpipes
     public Vector3 SpawnPos; //Spawn Pos f�r alle weiteren Halfpipes
     private ObjectMovement objectMovementScript;
@@ -31,8 +32,7 @@ public class SpawnManager : MonoBehaviour
         SpawnStartHalfpipe(objectLength);
         SpawnStartHalfpipe(2*objectLength);
         halfpipeInstance = SpawnStartHalfpipe(3 * objectLength);
-        InvokeRepeating("SpawnRandomEnemy", startDelay, Random.Range(2, 5));
-        
+        InvokeRepeating("SpawnObjects", startDelay, Random.Range(2, 5));
     }
 
 
@@ -60,9 +60,10 @@ public class SpawnManager : MonoBehaviour
         return halfpipeInstance;
     }
 
-    void SpawnRandomEnemy()
+    void SpawnObjects ()
     {
         Instantiate(enemyPrefab, new Vector3(SpawnPos.x+Random.Range(-5, 5), SpawnPos.y+8, SpawnPos.z), enemyPrefab.transform.rotation);
+        Instantiate(Dollar, new Vector3(0, 0, SpawnPos.z-50), Dollar.transform.rotation);
     }
 
 }

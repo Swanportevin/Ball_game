@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateScore() {
+    public void UpdateScore(int ScoreToAdd) {
         if (isGameActive){
-            score += 1;
+            score += ScoreToAdd;
             scoreText.text = "Score:"+(score);
         }
     }

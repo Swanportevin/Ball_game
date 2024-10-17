@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public bool isOnGround = true;
     public float gravityModifier = 1.5f;
+    private GameManager GameManager_script;
 
     Rigidbody rigidBody;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
  
     }
 
@@ -42,14 +44,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // folgende ermöglichen die Bewegung der Kugel nur bei Bodenkontakt.
+    // folgende ermï¿½glichen die Bewegung der Kugel nur bei Bodenkontakt.
 
-    private void OnCollisionEnter(Collision ground)
+    private void OnCollisionEnter(Collision other)
     {
 
-        if (ground.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+        }
+
+        if (other.gameObject.CompareTag("dollar")){
+            GameManager_script.UpdateScore(5);
+            Destroy(other.gameObject);
         }
 
     }

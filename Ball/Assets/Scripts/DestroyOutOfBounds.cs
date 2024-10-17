@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyOutOfBounds : MonoBehaviour
 {
     private float behindBound;
-    private float downBound;
+    private float BottomLimit = -5;
     private Collider objectCollider;
     public Vector3 objectSize;
     private GameManager GameManager_script;
@@ -25,14 +25,14 @@ public class DestroyOutOfBounds : MonoBehaviour
         if (transform.position.z < behindBound) // Zerst�rt Halfpipe, wenn behindBound unterschritten wird.
         {
             Destroy(gameObject);
-            GameManager_script.UpdateScore();
+            GameManager_script.UpdateScore(1);
             GameManager_script.UpdateSpeed();
             Debug.Log("Add one point");
         }
-        if (transform.position.y < downBound)
-        {
+
+        if (transform.position.y < BottomLimit) {
+            GameManager_script.GameOver();
             Destroy(gameObject);
-            
         }
     }
 }

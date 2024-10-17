@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71766d530ec2c004f855424613e4233e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  gameOverText: {fileID: 0}
+  scoreText: {fileID: 1035704874}
+  gameOverText: {fileID: 1203751767}
   halfpipePrefabs:
   - {fileID: 3692510134234936040, guid: 2225a2d12a3f3994ca52a9a24cc71938, type: 3}
   - {fileID: 5706569672492189622, guid: 91626d3ed606aea40bb2c8d009c5ab4a, type: 3}
@@ -263,6 +263,7 @@ MonoBehaviour:
   - {fileID: 7686284877802946641, guid: 112b7d36a2637504e8c25002a474e534, type: 3}
   - {fileID: 4573662147619159557, guid: e726daefaf6fcbd478b384b366830837, type: 3}
   halfpipeInstance: {fileID: 0}
+  Dollar: {fileID: 7166055075885893399, guid: 29581f198b0ef4d5a8cc72f10370c41e, type: 3}
   startSpawnPos: {x: 0, y: 7, z: 20}
   SpawnPos: {x: 0, y: 7, z: 320}
   position: {x: 0, y: 0, z: 0}
@@ -618,9 +619,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 785218803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5392fe207ca304039afbb42aeba2afcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 55bba46d9ac592541b9b69eda16ba9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSize: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

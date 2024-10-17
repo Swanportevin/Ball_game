@@ -36,6 +36,11 @@ public class ObjectMovement : MonoBehaviour
         {
             transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
         }
+        //move dollar forward
+        if (gameObject.CompareTag("dollar"))
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed, Space.World);
+        }
         
     }
 
