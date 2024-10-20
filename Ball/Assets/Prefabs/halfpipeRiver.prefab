@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8044146293552213412
+--- !u!1001 &4611413024477499321
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.82412624
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.000000021855694
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_LocalRotation.y
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.56640625
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58,15 +58,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -69
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 61079a77b9329a8468b478f541facd80, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: cd20510b770511b4e90a647c70b7108b, type: 3}
     - target: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_Name
-      value: halfpipe2LeftRot
+      value: halfpipeRiver
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_TagString
@@ -78,53 +82,51 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2662409922099387172}
+      addedObject: {fileID: 231404785001004145}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4935727991240743382}
+      addedObject: {fileID: 7567264244334709980}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3145458837926160590}
+      addedObject: {fileID: 467092770732190252}
   m_SourcePrefab: {fileID: 100100000, guid: 61079a77b9329a8468b478f541facd80, type: 3}
---- !u!1 &7161820440019161333 stripped
+--- !u!1 &3692510134234936040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
-  m_PrefabInstance: {fileID: 8044146293552213412}
+  m_PrefabInstance: {fileID: 4611413024477499321}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2662409922099387172
+--- !u!114 &231404785001004145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7161820440019161333}
+  m_GameObject: {fileID: 3692510134234936040}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bba46d9ac592541b9b69eda16ba9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectSize: {x: 0, y: 0, z: 0}
---- !u!114 &4935727991240743382
+--- !u!114 &7567264244334709980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7161820440019161333}
+  m_GameObject: {fileID: 3692510134234936040}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68415ee2cc3f5a34ab467ebd5f3bef3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  objectSize: {x: 0, y: 0, z: 0}
---- !u!64 &3145458837926160590
+--- !u!64 &467092770732190252
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7161820440019161333}
+  m_GameObject: {fileID: 3692510134234936040}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -139,4 +141,4 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: 61079a77b9329a8468b478f541facd80, type: 3}
+  m_Mesh: {fileID: 2534964839176971238, guid: cd20510b770511b4e90a647c70b7108b, type: 3}

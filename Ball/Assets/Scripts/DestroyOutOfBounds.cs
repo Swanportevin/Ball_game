@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyOutOfBounds : MonoBehaviour
 {
     private float behindBound;
-    private float BottomLimit = -5;
+    private float BottomLimit = -10;
     private Collider objectCollider;
     public Vector3 objectSize;
     private GameManager GameManager_script;

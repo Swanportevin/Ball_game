@@ -6,7 +6,6 @@ using UnityEngine;
 public class ObjectMovement : MonoBehaviour
 {
     private Collider objectCollider;
-    public Vector3 objectSize;
     private GameManager GameManager_script;
 
 
@@ -14,9 +13,6 @@ public class ObjectMovement : MonoBehaviour
     void Start()
     {
 
-        //Berechnung der jeweiligen L�nge der Halfpipes.
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
-        objectSize = renderer.bounds.size;
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
         
 
@@ -42,5 +38,7 @@ public class ObjectMovement : MonoBehaviour
         }
         
     }
+
+
 
 }

@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateSpeed(){
-        speed += 1;
+        if (score / 5 == 0)
+        {
+            speed += 1;
+        }
+        
     }
 }

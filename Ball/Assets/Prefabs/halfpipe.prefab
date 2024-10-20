@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_Name
-      value: halfpipe2
+      value: halfpipe
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61079a77b9329a8468b478f541facd80, type: 3}
       propertyPath: m_TagString
@@ -116,8 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68415ee2cc3f5a34ab467ebd5f3bef3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  objectSize: {x: 0, y: 0, z: 0}
 --- !u!64 &467092770732190252
 MeshCollider:
   m_ObjectHideFlags: 0
