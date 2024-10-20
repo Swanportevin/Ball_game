@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
-        
+        score = 0;
     }
 
     // Update is called once per frame
@@ -37,13 +37,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver() { 
+    public void GameOver() {
         gameOverText.gameObject.SetActive(true);
         isGameActive = false;
     }
 
     public void UpdateSpeed(){
-        if (score / 5 == 0)
+        if (score / 3 <= 3)
         {
             speed += 1;
         }
