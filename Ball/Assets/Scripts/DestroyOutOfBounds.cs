@@ -27,7 +27,6 @@ public class DestroyOutOfBounds : MonoBehaviour
         if (transform.position.z < behindBound) // Zerst�rt Halfpipe, wenn behindBound unterschritten wird.
         {
             Destroy(gameObject);
-            GameManager_script.UpdateScore(1);
             GameManager_script.UpdateSpeed();
             Debug.Log("Add one point");
         }

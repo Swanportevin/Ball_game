@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter(Collision other) // Zerst�rt Player und Enemy bei Kollision.
     {
         enemy = other.gameObject;
-        if (enemy.CompareTag("Enemy"))
+        if (enemy.CompareTag("Enemy") || enemy.CompareTag("MovingEnemy"))
         {
             GameManager_script.GameOver();
             Destroy(gameObject);

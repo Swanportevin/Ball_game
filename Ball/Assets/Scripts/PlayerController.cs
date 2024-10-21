@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (other.gameObject.CompareTag("dollar")){
-            GameManager_script.UpdateScore(5);
+            //GameManager_script.UpdateScore(5);
             Destroy(other.gameObject);
         }
 

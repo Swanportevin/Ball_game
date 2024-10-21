@@ -10,11 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7034495514871979085, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1176562875233168744, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
       propertyPath: m_Name
-      value: Enemy Variant
+      value: Enemy Variant 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176562875233168744, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
+      propertyPath: m_TagString
+      value: MovingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 1346289620369063288, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
       propertyPath: m_Materials.Array.data[0]

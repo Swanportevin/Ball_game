@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
     public GameObject[] halfpipePrefabs; // Liste mit allen Prefabs
     public GameObject halfpipeInstance; // zuletzt initialisierte Halfpipe
     public GameObject Dollar; //Dollar
@@ -23,6 +21,7 @@ public class SpawnManager : MonoBehaviour
 
     private GameManager GameManager_script;
     public GameObject enemyPrefab;
+    public GameObject MovingEnemy;
     public float startDelay;
     
 
@@ -79,7 +78,13 @@ public class SpawnManager : MonoBehaviour
     {
         if (GameManager_script.isGameActive)
         {
-            Instantiate(enemyPrefab, new Vector3(SpawnPos.x + Random.Range(-10, 10), SpawnPos.y + 8, SpawnPos.z), enemyPrefab.transform.rotation);
+            if (Random.Range(0, 4) == 1)
+            {
+                Instantiate(MovingEnemy, new Vector3(SpawnPos.x + Random.Range(-10, 10), SpawnPos.y+2, SpawnPos.z), enemyPrefab.transform.rotation);
+            }
+            else { 
+                Instantiate(enemyPrefab, new Vector3(SpawnPos.x + Random.Range(-10, 10), SpawnPos.y + 8, SpawnPos.z), enemyPrefab.transform.rotation);
+            }
             Instantiate(Dollar, new Vector3(SpawnPos.x + Random.Range(-5, 5), SpawnPos.y + 5, SpawnPos.z - 50), Dollar.transform.rotation);
         }
         

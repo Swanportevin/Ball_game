@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ public class ObjectMovement : MonoBehaviour
 {
     private Collider objectCollider;
     private GameManager GameManager_script;
+    private Vector3 MovingDirection =  Vector3.forward;
+    private int leftBorder = -10;
+    private int rightBorder = 10;
 
 
     // Start is called before the first frame update
@@ -32,6 +36,18 @@ public class ObjectMovement : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
+        }
+        // Bewegung der moving enemies.
+        if (gameObject.CompareTag("MovingEnemy"))
+        {
+            transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
+            transform.Translate(MovingDirection * Time.deltaTime * (GameManager_script.speed-20));
+            if (transform.position.x<leftBorder){
+                MovingDirection =  Vector3.forward;
+            }
+            if (transform.position.x>rightBorder){
+                MovingDirection =  Vector3.back;
+            }
         }
         //move dollar forward
         if (gameObject.CompareTag("dollar"))
