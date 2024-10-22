@@ -67,10 +67,7 @@ public class SpawnManager : MonoBehaviour
         int halfpipeIndex = Random.Range(0, halfpipePrefabs.Length);
 
         halfpipeInstance = Instantiate(halfpipePrefabs[halfpipeIndex], SpawnPos, halfpipePrefabs[halfpipeIndex].transform.rotation);
-        //if (halfpipeInstance.name == "halfpipeBridge(Clone)")
-        //{
-            //halfpipeInstance.transform.position = new Vector3(SpawnPos.x, SpawnPos.y, SpawnPos.z - 10);
-        //}
+
         return halfpipeInstance;
     }
 
@@ -80,9 +77,10 @@ public class SpawnManager : MonoBehaviour
         {
             if (Random.Range(0, 4) == 1)
             {
-                Instantiate(MovingEnemy, new Vector3(SpawnPos.x + Random.Range(-10, 10), SpawnPos.y+2, SpawnPos.z), enemyPrefab.transform.rotation);
+                Instantiate(MovingEnemy, new Vector3(SpawnPos.x + Random.Range(-10, 10), SpawnPos.y + Random.Range(-3, 4), SpawnPos.z), enemyPrefab.transform.rotation);
             }
-            else { 
+            else 
+            { 
                 Instantiate(enemyPrefab, new Vector3(SpawnPos.x + Random.Range(-10, 10), SpawnPos.y + 8, SpawnPos.z), enemyPrefab.transform.rotation);
             }
             Instantiate(Dollar, new Vector3(SpawnPos.x + Random.Range(-5, 5), SpawnPos.y + 5, SpawnPos.z - 50), Dollar.transform.rotation);

@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - dollar
+  - MovingEnemy
+  - Dollar
   layers:
   - Default
   - TransparentFX

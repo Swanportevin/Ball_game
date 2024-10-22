@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
         }
 
-        if (other.gameObject.CompareTag("dollar")){
-            //GameManager_script.UpdateScore(5);
+        if (other.gameObject.CompareTag("Dollar")){
+            GameManager_script.UpdateScore(5);
             Destroy(other.gameObject);
         }
 

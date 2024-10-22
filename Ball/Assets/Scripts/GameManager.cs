@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
     public static float highscore;
     public bool isGameActive = true;
     private float time = 0.0f;
-    private float ScoreToSchow = 0;
+    private float timeAsScore;
+    private int halfpipeCounter;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI HighScoreText;
+    public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gameOverText;
+    public Button menuButton;
     private SpawnManager SpawnManager_script;
     // Start is called before the first frame update
     void Start()
@@ -28,36 +30,44 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGameActive){
+        if (isGameActive)
+        {
             SpawnManager_script.SpawnPipe();
-            time += Time.deltaTime;
-            scoreText.text = "Score: "+Mathf.Round(time*100.0f)*0.01f;
-            HighScoreText.text = "Highscore: "+Mathf.Round(highscore*100.0f)*0.01f;
-            if (time>highscore){
-                highscore = time;
-                PlayerPrefs.SetFloat ("highscore", highscore);
-            }
+            UpdateScore(0);
         }
     }
 
-    public void UpdateScore(int ScoreToAdd) {
-        if (isGameActive){
-            time = Time.deltaTime;
-            ScoreToSchow = time+ScoreToAdd;
-            scoreText.text = "Score:"+ScoreToSchow;
+    public void UpdateScore(int ScoreToAdd)
+    {
+        time += Time.deltaTime + ScoreToAdd;
+        timeAsScore = Mathf.Round(time);
+        scoreText.text = "Score: " + timeAsScore;
+        highScoreText.text = "Highscore: " + highscore;
+        if (timeAsScore > highscore)
+        {
+            highscore = timeAsScore;
+            PlayerPrefs.SetFloat("highscore", highscore);
         }
     }
 
     public void GameOver() {
         gameOverText.gameObject.SetActive(true);
+        menuButton.gameObject.SetActive(true);
+        //scoreText.rectTransform.position = new Vector3(-102, -300);
+        //highScoreText.rectTransform.position = new Vector3(-102, -285);
+
         isGameActive = false;
     }
 
-    public void UpdateSpeed(){
-        if (time / 3 <= 3)
+    public void UpdateSpeed()
+    {
+        halfpipeCounter++;
+
+        if (halfpipeCounter == 3)
         {
-            speed += 1;
+            speed++;
+            halfpipeCounter = 0;
         }
-        
+
     }
 }

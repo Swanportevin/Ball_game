@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1707125086593687888}
   m_Layer: 0
   m_Name: DollarSign
-  m_TagString: dollar
+  m_TagString: Dollar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bba46d9ac592541b9b69eda16ba9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   objectSize: {x: 0, y: 0, z: 0}
 --- !u!114 &2230618136848677459
 MonoBehaviour:

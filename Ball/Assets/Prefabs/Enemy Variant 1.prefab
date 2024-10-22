@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7034495514871979085, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
+      propertyPath: m_Constraints
+      value: 124
+      objectReference: {fileID: 0}
     - target: {fileID: 1176562875233168744, guid: b69483ddc94b41a4aa4c13c51dc828bd, type: 3}
       propertyPath: m_Name
       value: Enemy Variant 1

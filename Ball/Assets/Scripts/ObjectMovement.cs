@@ -41,7 +41,7 @@ public class ObjectMovement : MonoBehaviour
         if (gameObject.CompareTag("MovingEnemy"))
         {
             transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
-            transform.Translate(MovingDirection * Time.deltaTime * (GameManager_script.speed-20));
+            transform.Translate(MovingDirection * Time.deltaTime * (GameManager_script.speed-30));
             if (transform.position.x<leftBorder){
                 MovingDirection =  Vector3.forward;
             }
@@ -50,7 +50,7 @@ public class ObjectMovement : MonoBehaviour
             }
         }
         //move dollar forward
-        if (gameObject.CompareTag("dollar"))
+        if (gameObject.CompareTag("Dollar"))
         {
             transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed, Space.World);
         }

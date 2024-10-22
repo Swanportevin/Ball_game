@@ -23,17 +23,21 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (transform.position.z < behindBound) // Zerst�rt Halfpipe, wenn behindBound unterschritten wird.
+        if (GameManager_script.isGameActive)
         {
-            Destroy(gameObject);
-            GameManager_script.UpdateSpeed();
-            Debug.Log("Add one point");
-        }
+            if (transform.position.z < behindBound) // Zerst�rt Halfpipe, wenn behindBound unterschritten wird.
+            {
+                Destroy(gameObject);
+                GameManager_script.UpdateSpeed();
 
-        if (Player.transform.position.y < BottomLimit) {
-            GameManager_script.GameOver();
-            Destroy(gameObject);
+            }
+
+            if (Player.transform.position.y < BottomLimit)
+            {
+                GameManager_script.GameOver();
+                Destroy(gameObject);
+            }
         }
+        
     }
 }

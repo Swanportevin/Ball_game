@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bba46d9ac592541b9b69eda16ba9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 785218803}
   objectSize: {x: 0, y: 0, z: 0}
 --- !u!135 &785218812
 SphereCollider:
@@ -1302,8 +1302,9 @@ MonoBehaviour:
   speed: 40
   isGameActive: 1
   scoreText: {fileID: 1035704874}
-  HighScoreText: {fileID: 1627768575}
+  highScoreText: {fileID: 1627768575}
   gameOverText: {fileID: 1203751767}
+  menuButton: {fileID: 1165780918}
 --- !u!4 &1420999067
 Transform:
   m_ObjectHideFlags: 0
