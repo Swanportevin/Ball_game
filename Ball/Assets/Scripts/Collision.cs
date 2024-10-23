@@ -6,11 +6,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     GameObject enemy;
+    Rigidbody rigidBodyEnemy;
+    Rigidbody rigidBodyPlayer;
+
     private GameManager GameManager_script;
     // Start is called before the first frame update
     void Start()
     {
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        rigidBodyPlayer = GetComponent<Rigidbody>();
         
     }
 
@@ -26,8 +30,12 @@ public class Enemy : MonoBehaviour
         if (enemy.CompareTag("Enemy") || enemy.CompareTag("MovingEnemy"))
         {
             GameManager_script.GameOver();
+            //Vector3 awayFromPlayer = (enemy.transform.position - transform.position);
+            //rigidBodyEnemy = enemy.GetComponent<Rigidbody>();
+            //rigidBodyEnemy.AddForce(awayFromPlayer*10, ForceMode.Impulse);
+            Destroy(enemy.gameObject);
             Destroy(gameObject);
-            Destroy(enemy);
+            
         }
         
 

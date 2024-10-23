@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    public TextMeshProUGUI highScoreText2;
+    private float highscore;
     // Start is called before the first frame update
     void Start()
     {
-        
+        highscore = PlayerPrefs.GetFloat("highscore", highscore);
+        highScoreText2.text = "Highscore: " + highscore;
     }
 
     // Update is called once per frame
@@ -30,6 +33,8 @@ public class Menu : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        
         SceneManager.LoadScene(0);
+        
     }
 }

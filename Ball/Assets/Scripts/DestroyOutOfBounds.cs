@@ -37,6 +37,10 @@ public class DestroyOutOfBounds : MonoBehaviour
                 GameManager_script.GameOver();
                 Destroy(gameObject);
             }
+            else if (transform.position.y < BottomLimit)
+            {
+                Destroy(gameObject);
+            }
         }
         
     }

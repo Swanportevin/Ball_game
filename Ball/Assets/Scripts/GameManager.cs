@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         gameOverText.gameObject.SetActive(true);
         menuButton.gameObject.SetActive(true);
-        //scoreText.rectTransform.position = new Vector3(-102, -300);
-        //highScoreText.rectTransform.position = new Vector3(-102, -285);
+        scoreText.rectTransform.position = new Vector2(855, 250);
+        highScoreText.rectTransform.position = new Vector2(855, 300);
 
         isGameActive = false;
     }
