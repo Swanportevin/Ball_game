@@ -9,7 +9,7 @@ public class ObjectMovement : MonoBehaviour
 {
     private Collider objectCollider;
     private GameManager GameManager_script;
-    private Vector3 MovingDirection =  Vector3.forward;
+    private Vector3 MovingDirection = Vector3.forward;
     private int leftBorder = -10;
     private int rightBorder = 10;
 
@@ -20,7 +20,7 @@ public class ObjectMovement : MonoBehaviour
 
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        
+
 
     }
 
@@ -41,12 +41,14 @@ public class ObjectMovement : MonoBehaviour
         if (gameObject.CompareTag("MovingEnemy"))
         {
             transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
-            transform.Translate(MovingDirection * Time.deltaTime * (GameManager_script.speed-30));
-            if (transform.position.x<leftBorder){
-                MovingDirection =  Vector3.forward;
+            transform.Translate(MovingDirection * Time.deltaTime * (GameManager_script.speed - 30));
+            if (transform.position.x < leftBorder)
+            {
+                MovingDirection = Vector3.forward;
             }
-            if (transform.position.x>rightBorder){
-                MovingDirection =  Vector3.back;
+            if (transform.position.x > rightBorder)
+            {
+                MovingDirection = Vector3.back;
             }
         }
         //move dollar forward
@@ -54,9 +56,7 @@ public class ObjectMovement : MonoBehaviour
         {
             transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed, Space.World);
         }
-        
+
     }
-
-
 
 }

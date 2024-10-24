@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
 
 
 
-        if (position.z < startSpawnPos.z+229) //Wenn Halfpipe Pos bestimmten Punkt unterschreitet, generiere Neue.
+        if (position.z < SpawnPos.z - objectLength + 4) //Wenn Halfpipe Pos bestimmten Punkt unterschreitet, generiere Neue.
         {
             halfpipeInstance = SpawnRandomHalfpipe();
         }
@@ -58,7 +58,7 @@ public class SpawnManager : MonoBehaviour
 
     GameObject SpawnStartHalfpipe(float objectLength)
     {
-        halfpipeInstance = Instantiate(halfpipePrefabs[0], new Vector3(startSpawnPos.x, startSpawnPos.y, startSpawnPos.z + objectLength), halfpipePrefabs[0].transform.rotation);
+        halfpipeInstance = Instantiate(halfpipePrefabs[0], new Vector3(startSpawnPos.x, startSpawnPos.y, startSpawnPos.z + objectLength+4), halfpipePrefabs[0].transform.rotation);
         return halfpipeInstance;
     }
 
@@ -81,7 +81,7 @@ public class SpawnManager : MonoBehaviour
             }
             else 
             { 
-                Instantiate(enemyPrefab, new Vector3(SpawnPos.x + Random.Range(-8, 8), SpawnPos.y + 8, SpawnPos.z), enemyPrefab.transform.rotation);
+                Instantiate(enemyPrefab, new Vector3(SpawnPos.x + Random.Range(-6, 6), SpawnPos.y + 8, SpawnPos.z), enemyPrefab.transform.rotation);
             }
             Instantiate(Dollar, new Vector3(SpawnPos.x + Random.Range(-5, 5), SpawnPos.y + 5, SpawnPos.z - 50), Dollar.transform.rotation);
         }
