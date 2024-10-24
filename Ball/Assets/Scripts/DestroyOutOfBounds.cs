@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    public GameObject Player;
-    private float behindBound;
-    private float BottomLimit = -20;
-    private Collider objectCollider;
-    public Vector3 objectSize;
+    private float behindBound = -50.0f;
+    private float BottomLimit = -20.0f;
     private GameManager GameManager_script;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player");
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
-        objectSize = renderer.bounds.size; // Berechnung der Gr�sse der Halfpipe.
-        behindBound = -23f - objectSize.z/2; // -23 ist z Position der Main Camera.
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -30,19 +23,16 @@ public class DestroyOutOfBounds : MonoBehaviour
 
         }
 
-        if (GameManager_script.isGameActive)
-        {
 
-            if (Player.transform.position.y < BottomLimit)
-            {
-                GameManager_script.GameOver();
-                Destroy(gameObject);
-            }
-            else if (transform.position.y < BottomLimit)
-            {
-                Destroy(gameObject);
-            }
+        if (gameObject.CompareTag("Player") && transform.position.y < BottomLimit)
+        {
+            GameManager_script.GameOver();
+            Destroy(gameObject);
         }
-        
+        else if (transform.position.y < BottomLimit)
+        {
+            Destroy(gameObject);
+        }
     }
+        
 }

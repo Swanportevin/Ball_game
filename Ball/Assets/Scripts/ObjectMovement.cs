@@ -10,8 +10,10 @@ public class ObjectMovement : MonoBehaviour
     private Collider objectCollider;
     private GameManager GameManager_script;
     private Vector3 MovingDirection = Vector3.forward;
-    private int leftBorder = -10;
-    private int rightBorder = 10;
+    private float borderAngle = 75;
+    private Rigidbody pendulumRb;
+    private float pendulumSpeed = 1.5f;
+    public int random;
 
 
     // Start is called before the first frame update
@@ -20,7 +22,7 @@ public class ObjectMovement : MonoBehaviour
 
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-
+        random = Random.Range(0, 20);
 
     }
 
@@ -40,17 +42,12 @@ public class ObjectMovement : MonoBehaviour
         // Bewegung der moving enemies.
         if (gameObject.CompareTag("MovingEnemy"))
         {
-            transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);
-            transform.Translate(MovingDirection * Time.deltaTime * (GameManager_script.speed - 30));
-            if (transform.position.x < leftBorder)
-            {
-                MovingDirection = Vector3.forward;
-            }
-            if (transform.position.x > rightBorder)
-            {
-                MovingDirection = Vector3.back;
-            }
+            transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed);
+            float angle = borderAngle * Mathf.Sin(Time.time + random + pendulumSpeed);
+            transform.localRotation = Quaternion.Euler(0, 0, angle);
+            
         }
+        
         //move dollar forward
         if (gameObject.CompareTag("Dollar"))
         {

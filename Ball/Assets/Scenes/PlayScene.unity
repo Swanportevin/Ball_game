@@ -340,7 +340,7 @@ MonoBehaviour:
   objectLength: 0
   position: {x: 0, y: 0, z: 0}
   enemyPrefab: {fileID: 3600389210965966930, guid: 8580a4699ebf50f43bca68ebcdce90b7, type: 3}
-  MovingEnemy: {fileID: 3600389210965966930, guid: 8a0f1d2d3f42fbe4eafcf93ca4177d8b, type: 3}
+  MovingEnemy: {fileID: 178234634258352716, guid: 4f4a16b750d5c484a93400fc2f901691, type: 3}
   startDelay: 5
 --- !u!4 &614262104
 Transform:
@@ -513,7 +513,7 @@ Transform:
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 10.74, y: 20.3, z: -17.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 785218814}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,7 +602,7 @@ Transform:
   m_GameObject: {fileID: 785218803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 17.14, z: 3.9}
+  m_LocalPosition: {x: 0, y: 17.14, z: 3.9}
   m_LocalScale: {x: 52.24, y: 52.24, z: 52.24}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -662,8 +662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bba46d9ac592541b9b69eda16ba9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 785218803}
-  objectSize: {x: 0, y: 0, z: 0}
 --- !u!135 &785218812
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -798,7 +796,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07914282, y: -0, z: -0, w: 0.9968633}
-  m_LocalPosition: {x: -1.3, y: 13, z: -22.7}
+  m_LocalPosition: {x: 0, y: 13, z: -22.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
