@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
         SpawnStartHalfpipe(objectLength);
         SpawnStartHalfpipe(2*objectLength);
         halfpipeInstance = SpawnStartHalfpipe(3 * objectLength);
-        InvokeRepeating("SpawnObjects", startDelay, Random.Range(3, 6));
+        InvokeRepeating("SpawnObjects", startDelay, Random.Range(3, 6));//Random.Range(3, 6)
     }
 
 

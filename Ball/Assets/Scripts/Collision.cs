@@ -27,16 +27,7 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter(Collision other) // Zerst�rt Player und Enemy bei Kollision.
     {
         enemy = other.gameObject;
-        if (enemy.CompareTag("Enemy") || enemy.CompareTag("MovingEnemy"))
-        {
-            GameManager_script.GameOver();
-            //Vector3 awayFromPlayer = (enemy.transform.position - transform.position);
-            //rigidBodyEnemy = enemy.GetComponent<Rigidbody>();
-            //rigidBodyEnemy.AddForce(awayFromPlayer*10, ForceMode.Impulse);
-            Destroy(enemy.gameObject);
-            Destroy(gameObject);
-            
-        }
+        
         
 
     }

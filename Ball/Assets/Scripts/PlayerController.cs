@@ -6,11 +6,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    public bool isOnGround = true;
+    public bool isOnGround;
     public float gravityModifier = 1.5f;
     private GameManager GameManager_script;
     public Vector3 contactpoint;
     public Vector3 OrtogonalVector;
+    public ParticleSystem DollarExplosion;
+    public AudioSource audioSource;
+    public AudioClip enemySound;
+    public AudioClip dollarSound;
+    public AudioClip groundSound;
+
+
 
     Rigidbody rigidBody;
 
@@ -31,32 +38,17 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Contact Point: " + contactpoint);
         
         // Steuerung
-        if (isOnGround)
+        if (isOnGround && GameManager_script.isGameActive)
         {
             OrtogonalVector = Vector3.Cross((contactpoint - transform.position), new Vector3(0, 0, 1)).normalized;
-            if (transform.position.y < 7)
-            {
-                if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D))
                 {
-                    rigidBody.AddForce(Vector3.right * speed);
+                    rigidBody.AddForce(-OrtogonalVector * speed);//Vector3.right
 
                 }
-                else if (Input.GetKey(KeyCode.A))
-                {
-                    rigidBody.AddForce(Vector3.left * speed);
-                }
-            }
-            if (transform.position.y > 7)
+            else if (Input.GetKey(KeyCode.A))
             {
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rigidBody.AddForce(-OrtogonalVector * speed/3);
-
-                }
-                else if (Input.GetKey(KeyCode.A))
-                {
-                    rigidBody.AddForce(OrtogonalVector * speed/3);
-                }
+                rigidBody.AddForce(OrtogonalVector * speed);//Vector3.left
             }
 
         }
@@ -74,38 +66,72 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        
-        if (other.gameObject.CompareTag("Dollar")){
-            GameManager_script.UpdateScore(5);
-            Destroy(other.gameObject);
-        }
+        if (GameManager_script.isGameActive)
+        {
 
+            if (other.gameObject.CompareTag("Dollar"))
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(dollarSound);
+                GameManager_script.DollarScore += 5;
+                DollarExplosion.Play();
+                Destroy(other.gameObject);
+            }
+            if (other.gameObject.CompareTag("Ground") && !audioSource.isPlaying)
+            {
+                isOnGround = true;
+                audioSource.clip = groundSound;
+                audioSource.loop = true;           
+                audioSource.Play(); 
+            }
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(enemySound);
+                GameManager_script.GameOver();
+                Destroy(other.gameObject);
+
+            }
+            if (other.gameObject.CompareTag("MovingEnemy"))
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(enemySound);
+                GameManager_script.GameOver();
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     private void OnCollisionStay(Collision ground)
     {
-
-        if (ground.gameObject.CompareTag("Ground"))
+        
+        if (ground.gameObject.CompareTag("Ground") && GameManager_script.isGameActive)
         {
             isOnGround = true;
             ContactPoint contact = ground.GetContact(0);
             contactpoint = contact.point;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = groundSound;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
         // Check if the object stops touching the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && GameManager_script.isGameActive)
         {
             isOnGround = false;
+            audioSource.Stop();
             // deleting the x velocity to keep the ball in the pipe
             if (transform.position.y>7 && transform.position.y<11)
             {
                 Vector3 currentVelocity = rigidBody.velocity;
                 rigidBody.velocity = new Vector3(0, currentVelocity.y, 0);
             }
-            
         }
     }
     

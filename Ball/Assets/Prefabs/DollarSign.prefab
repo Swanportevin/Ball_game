@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68415ee2cc3f5a34ab467ebd5f3bef3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  random: 0
 --- !u!114 &-7880078718810984552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bba46d9ac592541b9b69eda16ba9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  objectSize: {x: 0, y: 0, z: 0}
 --- !u!114 &2230618136848677459
 MonoBehaviour:
   m_ObjectHideFlags: 0

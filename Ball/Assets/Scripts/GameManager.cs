@@ -5,14 +5,15 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEditor;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public int speed = 40;
+    public float speed = 40.0f;
     public static float highscore;
     public bool isGameActive = true;
     private float time = 0.0f;
-    private float timeAsScore;
+    public int DollarScore = 0;
     private int halfpipeCounter;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
@@ -33,41 +34,38 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             SpawnManager_script.SpawnPipe();
-            UpdateScore(0);
+            time += Time.deltaTime;
+            scoreText.text = "Score: " + Math.Round(time+DollarScore);
+            highScoreText.text = "Highscore: " + Math.Round(highscore);
+            if (Math.Round(time+DollarScore) > highscore)
+            {
+                highscore = time+DollarScore;
+                PlayerPrefs.SetFloat("highscore", highscore);
+            }
+            speed = 40 + (80*time*time-time)/(time*time+9000);
+            
         }
     }
 
-    public void UpdateScore(int ScoreToAdd)
-    {
-        time += Time.deltaTime + ScoreToAdd;
-        timeAsScore = Mathf.Round(time);
-        scoreText.text = "Score: " + timeAsScore;
-        highScoreText.text = "Highscore: " + highscore;
-        if (timeAsScore > highscore)
-        {
-            highscore = timeAsScore;
-            PlayerPrefs.SetFloat("highscore", highscore);
-        }
-    }
 
     public void GameOver() {
         gameOverText.gameObject.SetActive(true);
         menuButton.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(false);
+        highScoreText.gameObject.SetActive(false);
         scoreText.rectTransform.position = new Vector2(855, 250);
         highScoreText.rectTransform.position = new Vector2(855, 300);
-
         isGameActive = false;
-    }
-
-    public void UpdateSpeed()
-    {
-        halfpipeCounter++;
-
-        if (halfpipeCounter == 3)
+        string [] NameToDestroy = { "Enemy", "MovingEnemy", "Dollar" };
+        foreach (string tag in NameToDestroy)
         {
-            speed++;
-            halfpipeCounter = 0;
+            GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag(tag);
+            foreach (GameObject obj in objectsToDestroy)
+            {
+                Destroy(obj);
+            }
         }
-
+        
     }
+
 }
