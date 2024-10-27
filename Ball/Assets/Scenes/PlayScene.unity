@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973549bc36c26c942a7c32115cf1b53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationMultiplikator: 10
+  rotationMultiplikator: 0
 --- !u!82 &785218816
 AudioSource:
   m_ObjectHideFlags: 0
