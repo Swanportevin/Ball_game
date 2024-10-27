@@ -54,10 +54,10 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         gameOverText.gameObject.SetActive(true);//Show gameover text
         menuButton.gameObject.SetActive(true);//Go back to the menu
-        scoreText.gameObject.SetActive(false);//Hide score
-        highScoreText.gameObject.SetActive(false);//Hide highscore
-        scoreText.rectTransform.position = new Vector2(855, 250);//Set new score on the menu screen
-        highScoreText.rectTransform.position = new Vector2(855, 300);//Set new highscore on the menu screen
+        scoreText.gameObject.SetActive(true);
+        highScoreText.gameObject.SetActive(true);
+        scoreText.rectTransform.position = new Vector2(855, 250);
+        highScoreText.rectTransform.position = new Vector2(855, 300);
         isGameActive = false;
         //Destroying all enemies and Dollar
         string [] NameToDestroy = { "Enemy", "MovingEnemy", "Dollar" };

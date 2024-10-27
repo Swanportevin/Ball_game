@@ -7,6 +7,8 @@ public class DestroyOutOfBounds : MonoBehaviour
     private float behindBound = -50.0f;
     private float BottomLimit = -20.0f;
     private GameManager GameManager_script;
+    public AudioSource audioSource;
+    public AudioClip gameOverSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class DestroyOutOfBounds : MonoBehaviour
         if (gameObject.CompareTag("Player") && transform.position.y < BottomLimit)//If player fell from pipe, gameover
         {
             GameManager_script.GameOver();
+            audioSource.PlayOneShot(gameOverSound);
             Destroy(gameObject);
         }
         

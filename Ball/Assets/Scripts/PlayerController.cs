@@ -42,12 +42,12 @@ public class PlayerController : MonoBehaviour
         {
             //Calculating the movement vector
             OrtogonalVector = Vector3.Cross((contactpoint - transform.position), new Vector3(0, 0, 1)).normalized;
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
                 {
                     rigidBody.AddForce(-OrtogonalVector * speed);//Vector3.right
 
                 }
-            else if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 rigidBody.AddForce(OrtogonalVector * speed);//Vector3.left
             }
@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.PlayOneShot(enemySound);
                 GameManager_script.GameOver();
                 Destroy(other.gameObject);
+                Destroy(gameObject);
 
             }
             if (other.gameObject.CompareTag("MovingEnemy"))//GameOver in gamemanager and destroy game Object
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.PlayOneShot(enemySound);
                 GameManager_script.GameOver();
                 Destroy(other.gameObject);
+                Destroy(gameObject);
             }
         }
     }

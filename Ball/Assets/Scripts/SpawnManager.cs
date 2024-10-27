@@ -58,7 +58,7 @@ public class SpawnManager : MonoBehaviour
 
     GameObject SpawnStartHalfpipe(float objectLength)
     {
-        halfpipeInstance = Instantiate(halfpipePrefabs[0], new Vector3(startSpawnPos.x, startSpawnPos.y, startSpawnPos.z + objectLength+4), halfpipePrefabs[0].transform.rotation);
+        halfpipeInstance = Instantiate(halfpipePrefabs[0], new Vector3(startSpawnPos.x, startSpawnPos.y, startSpawnPos.z + objectLength), halfpipePrefabs[0].transform.rotation);
         return halfpipeInstance;
     }
 
