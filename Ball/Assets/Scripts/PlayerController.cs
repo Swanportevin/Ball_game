@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         // Steuerung
         if (isOnGround && GameManager_script.isGameActive)
         {
+            //Calculating the movement vector
             OrtogonalVector = Vector3.Cross((contactpoint - transform.position), new Vector3(0, 0, 1)).normalized;
             if (Input.GetKey(KeyCode.D))
                 {
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager_script.isGameActive)
         {
 
-            if (other.gameObject.CompareTag("Dollar"))
+            if (other.gameObject.CompareTag("Dollar"))//+5 Score, play animation and destroy gameobject
             {
                 audioSource.Stop();
                 audioSource.PlayOneShot(dollarSound);
@@ -77,14 +78,14 @@ public class PlayerController : MonoBehaviour
                 DollarExplosion.Play();
                 Destroy(other.gameObject);
             }
-            if (other.gameObject.CompareTag("Ground") && !audioSource.isPlaying)
+            if (other.gameObject.CompareTag("Ground"))//Enable movement and loop music
             {
                 isOnGround = true;
                 audioSource.clip = groundSound;
                 audioSource.loop = true;           
                 audioSource.Play(); 
             }
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy"))//GameOver in gamemanager and destroy game Object
             {
                 audioSource.Stop();
                 audioSource.PlayOneShot(enemySound);
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.gameObject);
 
             }
-            if (other.gameObject.CompareTag("MovingEnemy"))
+            if (other.gameObject.CompareTag("MovingEnemy"))//GameOver in gamemanager and destroy game Object
             {
                 audioSource.Stop();
                 audioSource.PlayOneShot(enemySound);
@@ -108,9 +109,10 @@ public class PlayerController : MonoBehaviour
         if (ground.gameObject.CompareTag("Ground") && GameManager_script.isGameActive)
         {
             isOnGround = true;
+            //calculate contact point
             ContactPoint contact = ground.GetContact(0);
             contactpoint = contact.point;
-            if (!audioSource.isPlaying)
+            if (!audioSource.isPlaying)//Loop the audio
             {
                 audioSource.clip = groundSound;
                 audioSource.loop = true;
@@ -125,10 +127,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && GameManager_script.isGameActive)
         {
             isOnGround = false;
-            audioSource.Stop();
+            audioSource.Stop();//Stop the ball rolling audio
             // deleting the x velocity to keep the ball in the pipe
-            if (transform.position.y>7 && transform.position.y<11)
+            if (transform.position.y>7 && transform.position.y<11)//Enable the looping
             {
+                //ball lands in the pipe
                 Vector3 currentVelocity = rigidBody.velocity;
                 rigidBody.velocity = new Vector3(0, currentVelocity.y, 0);
             }

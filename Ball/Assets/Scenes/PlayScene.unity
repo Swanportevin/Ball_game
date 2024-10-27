@@ -535,7 +535,6 @@ GameObject:
   - component: {fileID: 785218811}
   - component: {fileID: 785218812}
   - component: {fileID: 785218813}
-  - component: {fileID: 785218814}
   - component: {fileID: 785218816}
   m_Layer: 0
   m_Name: Player
@@ -705,18 +704,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationMultiplikator: 0
---- !u!114 &785218814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785218803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136b0568eee5ea242b11e547170ebea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &785218816
 AudioSource:
   m_ObjectHideFlags: 0

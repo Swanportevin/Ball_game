@@ -33,15 +33,18 @@ public class GameManager : MonoBehaviour
     {
         if (isGameActive)
         {
-            SpawnManager_script.SpawnPipe();
+            SpawnManager_script.SpawnPipe();//Spawn the pipes
+            //Calculating score and showing it
             time += Time.deltaTime;
             scoreText.text = "Score: " + Math.Round(time+DollarScore);
             highScoreText.text = "Highscore: " + Math.Round(highscore);
             if (Math.Round(time+DollarScore) > highscore)
             {
+                //Setting new highscore
                 highscore = time+DollarScore;
                 PlayerPrefs.SetFloat("highscore", highscore);
             }
+            //Speed converges against 120
             speed = 40 + (80*time*time-time)/(time*time+9000);
             
         }
@@ -49,13 +52,14 @@ public class GameManager : MonoBehaviour
 
 
     public void GameOver() {
-        gameOverText.gameObject.SetActive(true);
-        menuButton.gameObject.SetActive(true);
-        scoreText.gameObject.SetActive(false);
-        highScoreText.gameObject.SetActive(false);
-        scoreText.rectTransform.position = new Vector2(855, 250);
-        highScoreText.rectTransform.position = new Vector2(855, 300);
+        gameOverText.gameObject.SetActive(true);//Show gameover text
+        menuButton.gameObject.SetActive(true);//Go back to the menu
+        scoreText.gameObject.SetActive(false);//Hide score
+        highScoreText.gameObject.SetActive(false);//Hide highscore
+        scoreText.rectTransform.position = new Vector2(855, 250);//Set new score on the menu screen
+        highScoreText.rectTransform.position = new Vector2(855, 300);//Set new highscore on the menu screen
         isGameActive = false;
+        //Destroying all enemies and Dollar
         string [] NameToDestroy = { "Enemy", "MovingEnemy", "Dollar" };
         foreach (string tag in NameToDestroy)
         {

@@ -48,7 +48,7 @@ public class ObjectMovement : MonoBehaviour
             
         }
         
-        //move dollar forward
+        //move dollar forward without affecting his rotation
         if (gameObject.CompareTag("Dollar"))
         {
             transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed, Space.World);

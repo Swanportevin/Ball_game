@@ -10,6 +10,7 @@ public class DestroyOutOfBounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Find game Manager Script
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -22,15 +23,12 @@ public class DestroyOutOfBounds : MonoBehaviour
         }
 
 
-        if (gameObject.CompareTag("Player") && transform.position.y < BottomLimit)
+        if (gameObject.CompareTag("Player") && transform.position.y < BottomLimit)//If player fell from pipe, gameover
         {
             GameManager_script.GameOver();
             Destroy(gameObject);
         }
-        else if (transform.position.y < BottomLimit)
-        {
-            Destroy(gameObject);
-        }
+        
     }
         
 }
