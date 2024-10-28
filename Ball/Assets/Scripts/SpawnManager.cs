@@ -8,47 +8,51 @@ using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] halfpipePrefabs; // Liste mit allen Prefabs
-    public GameObject halfpipeInstance; // zuletzt initialisierte Halfpipe
-    public GameObject Dollar; //Dollar
-    public Vector3 startSpawnPos; //SpawnPos f�r die ersten paar Halfpipes
-    public Vector3 SpawnPos; //Spawn Pos f�r alle weiteren Halfpipes
+    public GameObject[] halfpipePrefabs; // List with all halfpipe prefabs.
+    public GameObject halfpipeInstance; // latest instantiated halfpipe.
+    public GameObject Dollar; // dollar.
+    public Vector3 startSpawnPos; // Spawn Pos for the first couple halfpipes.
+    public Vector3 SpawnPos; // Spawn Pos for all new halfpipes.
+
+    // Used to calculate the lengths of the halfpipes.
     private MeshRenderer instanceRenderer;
     private MeshRenderer prefabsRenderer;
     public float objectLength = 0f;
 
-    public Vector3 position; //Position der Halfpipe Instanz
+    public Vector3 position; // Position of the halfpipe instance.
 
     private GameManager GameManager_script;
     public GameObject enemyPrefab;
     public GameObject MovingEnemy;
-    public float startDelay;
     
 
 
     void Start()
     {
         GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        halfpipeInstance = SpawnStartHalfpipe(0f);
+        halfpipeInstance = SpawnStartHalfpipe(0f); // Sets the first halfpipe as the first instance.
+
+        // Calculates the length of the first halfpipe.
         instanceRenderer = halfpipeInstance.GetComponent<MeshRenderer>();
         objectLength = instanceRenderer.bounds.size.z;
 
         SpawnStartHalfpipe(objectLength);
         SpawnStartHalfpipe(2*objectLength);
-        halfpipeInstance = SpawnStartHalfpipe(3 * objectLength);
-        InvokeRepeating("SpawnObjects", startDelay, Random.Range(3, 6));//Random.Range(3, 6)
+        halfpipeInstance = SpawnStartHalfpipe(3 * objectLength); // Sets last start halfpipe as the latest instance.
+        InvokeRepeating("SpawnObjects", 5, Random.Range(3, 6)); // Spawns enemies and dollars every 3 to 6 sec.
     }
 
 
     public void SpawnPipe()
     {
+        // Calculates length of the latest halfpipe.
         position = halfpipeInstance.transform.position;
         instanceRenderer = halfpipeInstance.GetComponent<MeshRenderer>();
         objectLength = instanceRenderer.bounds.size.z;
 
 
 
-        if (position.z < SpawnPos.z - objectLength + 4) //Wenn Halfpipe Pos bestimmten Punkt unterschreitet, generiere Neue.
+        if (position.z < SpawnPos.z - objectLength + 4) // Spawns a new halfpipe, after the latest instance goes below a certain point.
         {
             halfpipeInstance = SpawnRandomHalfpipe();
         }
@@ -62,7 +66,7 @@ public class SpawnManager : MonoBehaviour
         return halfpipeInstance;
     }
 
-    GameObject SpawnRandomHalfpipe()
+    GameObject SpawnRandomHalfpipe() // Spawns different halfpipes based on the list of prefabs.
     {
         int halfpipeIndex = Random.Range(0, halfpipePrefabs.Length);
 
@@ -71,7 +75,7 @@ public class SpawnManager : MonoBehaviour
         return halfpipeInstance;
     }
 
-    void SpawnObjects()
+    void SpawnObjects() // Spawns the enemies and dollars at variing positions.
     {
         if (GameManager_script.isGameActive)
         {
