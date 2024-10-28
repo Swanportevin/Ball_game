@@ -13,7 +13,8 @@ public class ObjectMovement : MonoBehaviour
     private float borderAngle = 75;
     private Rigidbody pendulumRb;
     private float pendulumSpeed = 1.5f;
-    public int random;
+    private int random;
+    private float spinSpeed = -250.0f;
 
 
     // Start is called before the first frame update
@@ -52,8 +53,8 @@ public class ObjectMovement : MonoBehaviour
         if (gameObject.CompareTag("Dollar"))
         {
             transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed, Space.World);
+            transform.Rotate(Vector3.up, spinSpeed * Time.deltaTime);
         }
-
     }
 
 }

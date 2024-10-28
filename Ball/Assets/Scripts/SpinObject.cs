@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DollarRotation : MonoBehaviour
+public class SpinObject : MonoBehaviour
 {
 
     private float spinSpeed = -250;
