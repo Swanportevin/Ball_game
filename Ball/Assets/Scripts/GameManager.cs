@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         menuButton.gameObject.SetActive(true);// Shows the menu button.
 
         // Moves the score and highscore under the menu button.
-        scoreText.rectTransform.position = new Vector2(855, 250);
+        scoreText.rectTransform.position = new Vector2(855, 220);
         highScoreText.rectTransform.position = new Vector2(855, 300);
 
         isGameActive = false;
