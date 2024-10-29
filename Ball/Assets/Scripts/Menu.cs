@@ -19,11 +19,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Restart the game if space is clicked
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Play();
-        }   
+
     }
 
     public void Play() // Function for the play button.
@@ -38,8 +34,6 @@ public class Menu : MonoBehaviour
 
     public void ReturnToMenu() // Function for the menu button.
     {
-        
         SceneManager.LoadScene(0);
-        
     }
 }
