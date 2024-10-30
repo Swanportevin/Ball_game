@@ -330,10 +330,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   halfpipePrefabs:
   - {fileID: 3692510134234936040, guid: 2225a2d12a3f3994ca52a9a24cc71938, type: 3}
+  - {fileID: 3692510134234936040, guid: 2225a2d12a3f3994ca52a9a24cc71938, type: 3}
   - {fileID: 3692510134234936040, guid: 71acef0e3856d034f8218041b76b68ec, type: 3}
   - {fileID: 3692510134234936040, guid: 2289d1b09e60eec4b8fb5040f281e5f3, type: 3}
   - {fileID: 3692510134234936040, guid: 0155afb33df8d844b92de772c07e0243, type: 3}
-  - {fileID: 3692510134234936040, guid: 2225a2d12a3f3994ca52a9a24cc71938, type: 3}
+  - {fileID: 1653114232562116380, guid: f30dbc954eff2c043a955619c8af8226, type: 3}
   halfpipeInstance: {fileID: 0}
   Dollar: {fileID: 7166055075885893399, guid: 29581f198b0ef4d5a8cc72f10370c41e, type: 3}
   startSpawnPos: {x: 0, y: 7, z: 20}
@@ -1785,7 +1786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -307, y: -390}
+  m_AnchoredPosition: {x: -307, y: -418}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811341125
@@ -1808,7 +1809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Enter or Tab to continue
+  m_text: Press Space or Return to restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

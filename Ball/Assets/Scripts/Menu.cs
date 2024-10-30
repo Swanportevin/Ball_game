@@ -16,7 +16,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         highscore = PlayerPrefs.GetFloat("highscore", highscore);
-        highScoreText2.text = "Highscore: " + Math.Round(highscore); // Shows the highscore on the menu screen
+        highScoreText2.text = "Highscore: " + Mathf.Round(highscore); // Shows the highscore on the menu screen.
 
         //Gets the gameManager if it exists.
         GameObject gameManagerObject = GameObject.Find("Game Manager");
@@ -32,13 +32,13 @@ public class Menu : MonoBehaviour
         //Restarts the game if space is clicked.
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            if (gameManager == null)
+            if (gameManager == null) // When on the menu screen.
+            {
+                Play(); 
+            }
+            else if (!gameManager.isGameActive) // When on the Game Over screen.
             {
                 Play();
-            }
-            else if (!gameManager.isGameActive)
-            {
-                ReturnToMenu();
             }
         }
     }

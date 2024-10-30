@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetFloat("highscore", highscore);
         SpawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         time = 0;
         highscore = PlayerPrefs.GetFloat ("highscore", highscore); // Saves the highscore and keeps it for every new session.

@@ -29,7 +29,7 @@ private void OnCollisionStay(Collision player){
             if (contactpoint.z > 3.9 && transform.position.z>18 && transform.position.z<31)
             {
                 Debug.Log(contactpoint + "Added left force");
-                PlayerController_script.rigidBody.AddForce(Vector3.left * 40 * contactpoint.z);
+                PlayerController_script.rigidBody.AddForce(Vector3.left * 20 * contactpoint.z);
             }
         }
 }
