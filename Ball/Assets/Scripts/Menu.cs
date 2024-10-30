@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,7 +14,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         highscore = PlayerPrefs.GetFloat("highscore", highscore);
-        highScoreText2.text = "Highscore: " + highscore; // Shows the highscore on the menu screen
+        highScoreText2.text = "Highscore: " + Math.Round(highscore); // Shows the highscore on the menu screen
     }
 
     // Update is called once per frame

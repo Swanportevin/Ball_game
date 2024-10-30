@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
             // Calculates the contact point.
             ContactPoint contact = ground.GetContact(0);
             contactpoint = contact.point;
+            
             if (!audioSource.isPlaying)// Loop the audio.
             {
                 audioSource.clip = groundSound;
