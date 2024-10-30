@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI PlayAgainText;
     public Button menuButton;
 
     private SpawnManager SpawnManager_script;
@@ -35,23 +36,33 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         if (isGameActive)
         {
             SpawnManager_script.SpawnPipe();//Spawns the halfpipes.
 
             // Calculates the score and shows it.
-            time += Time.deltaTime;
-            scoreText.text = "Score: " + Math.Round(time+DollarScore);
+            scoreText.text = "Score: " + Math.Round(time + DollarScore);
             highScoreText.text = "Highscore: " + Math.Round(highscore);
-            if (Math.Round(time+DollarScore) > highscore)
+            if (Math.Round(time + DollarScore) > highscore)
             {
                 // Sets new highscore.
-                highscore = time+DollarScore;
+                highscore = time + DollarScore;
                 PlayerPrefs.SetFloat("highscore", highscore);
             }
             // Speed converges against 120.
-            speed = 40 + (80*time*time-time)/(time*time+9000);
-            
+            speed = 40 + (80 * time * time - time) / (time * time + 9000);
+
+        }
+        //Blinking Play Again text
+        else { 
+            if(Math.Round(time*2)%2 == 1)
+            {
+                PlayAgainText.gameObject.SetActive(true);
+            }
+            else{
+                PlayAgainText.gameObject.SetActive(false);
+            }
         }
     }
 

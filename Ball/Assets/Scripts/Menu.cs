@@ -17,7 +17,6 @@ public class Menu : MonoBehaviour
     {
         highscore = PlayerPrefs.GetFloat("highscore", highscore);
         highScoreText2.text = "Highscore: " + Math.Round(highscore); // Shows the highscore on the menu screen
-        highScoreText2.text = "Highscore: " + highscore; // Shows the highscore on the menu screen.
 
         //Gets the gameManager if it exists.
         GameObject gameManagerObject = GameObject.Find("Game Manager");
