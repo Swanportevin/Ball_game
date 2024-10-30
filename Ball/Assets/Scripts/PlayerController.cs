@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip dollarSound;
     public AudioClip groundSound;
 
-    Rigidbody rigidBody; // Player rigidbody.
+    public Rigidbody rigidBody; // Player rigidbody.
 
     // Start is called before the first frame update
 

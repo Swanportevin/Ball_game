@@ -658,6 +658,7 @@ MonoBehaviour:
   enemySound: {fileID: 8300000, guid: 78201cd23fa384ecfa5f6e81d412182b, type: 3}
   dollarSound: {fileID: 8300000, guid: e06ce490ce49d48f59e184e1134aef4d, type: 3}
   groundSound: {fileID: 8300000, guid: 5530b474e9b8fe843b1d0d3191e026f9, type: 3}
+  rigidBody: {fileID: 0}
 --- !u!114 &785218811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,6 +1466,7 @@ MonoBehaviour:
   scoreText: {fileID: 1035704874}
   highScoreText: {fileID: 1627768575}
   gameOverText: {fileID: 1203751767}
+  PlayAgainText: {fileID: 1811341125}
   menuButton: {fileID: 1165780918}
 --- !u!4 &1420999067
 Transform:
@@ -1766,7 +1768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1811341124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1783,7 +1785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -307, y: -229}
+  m_AnchoredPosition: {x: -307, y: -390}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811341125
