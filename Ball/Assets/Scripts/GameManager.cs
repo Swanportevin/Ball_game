@@ -13,49 +13,51 @@ public class GameManager : MonoBehaviour
 
     public float speed = 40.0f;
     public static float highscore;
+    public float score;
     private float time = 0.0f;
     public int DollarScore = 0; // Variable to add the points from collected dollars to the current score.
     private int halfpipeCounter;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI highScoreText;
+    public TextMeshProUGUI scoreText; // Display during game is active.
+    public TextMeshProUGUI highScoreText; // Display during game is active.
+    public TextMeshProUGUI EndScoreText; // Display after game over.
+    public TextMeshProUGUI EndHighScoreText; // Display after game over.
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI PlayAgainText;
     public Button menuButton;
 
     private SpawnManager SpawnManager_script;
 
-    // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetFloat("highscore", highscore);
+        PlayerPrefs.SetFloat("highscore", highscore); // Set the highscore in the playerprefs to save it.
         SpawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         time = 0;
         highscore = PlayerPrefs.GetFloat ("highscore", highscore); // Saves the highscore and keeps it for every new session.
     }
 
-    // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        time += Time.deltaTime; // Calculate the time.
         if (isGameActive)
         {
             SpawnManager_script.SpawnPipe();//Spawns the halfpipes.
 
             // Calculates the score and shows it.
-            scoreText.text = "Score: " + Math.Round(time + DollarScore);
-            highScoreText.text = "Highscore: " + Math.Round(highscore);
-            if (Math.Round(time + DollarScore) > highscore)
+            score = time + DollarScore;
+            scoreText.text = "Score: " + Math.Round(score); // Show integer
+            highScoreText.text = "Highscore: " + Math.Round(highscore); // Show integer
+            if (Math.Round(score) > highscore)
             {
                 // Sets new highscore.
-                highscore = time + DollarScore;
+                highscore = score;
                 PlayerPrefs.SetFloat("highscore", highscore);
             }
             // Speed converges against 120.
             speed = 40 + (80 * time * time - time) / (time * time + 9000);
 
         }
-        //Blinking Play Again text
+        //Blinking Play Again text if the game is over.
         else { 
             if(Math.Round(time*2)%2 == 1)
             {
@@ -72,14 +74,18 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);// Shows the gameover text.
         menuButton.gameObject.SetActive(true);// Shows the menu button.
+        EndHighScoreText.text = "Highscore: "+Math.Round(highscore); 
+        EndScoreText.text = ""+Math.Round(score); 
+        EndHighScoreText.gameObject.SetActive(true); // Show highscore.
+        EndScoreText.gameObject.SetActive(true); // Show score.
 
-        // Moves the score and highscore under the menu button.
-        scoreText.rectTransform.position = new Vector2(855, 220);
-        highScoreText.rectTransform.position = new Vector2(855, 300);
+        // Hide the first score and highscore text
+        scoreText.gameObject.SetActive(false);
+        highScoreText.gameObject.SetActive(false);
 
         isGameActive = false;
 
-        // Destroys all enemies and Dollars.
+        // Destroys all enemy- and dollar prefabs.
         string [] NameToDestroy = { "Enemy", "MovingEnemy", "Dollar" };
         foreach (string tag in NameToDestroy)
         {

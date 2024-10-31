@@ -12,12 +12,13 @@ public class Menu : MonoBehaviour
 
     private GameManager gameManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         highscore = PlayerPrefs.GetFloat("highscore", highscore);
-        highScoreText2.text = "Highscore: " + Mathf.Round(highscore); // Shows the highscore on the menu screen.
-
+        // If the menu is open (highScoreText2 only exists in the menu scene).
+        if (highScoreText2 != null){
+            highScoreText2.text = "Highscore: " + Mathf.Round(highscore); // Shows the highscore on the menu screen.
+        }
         //Gets the gameManager if it exists.
         GameObject gameManagerObject = GameObject.Find("Game Manager");
         if (gameManagerObject != null)
@@ -32,7 +33,7 @@ public class Menu : MonoBehaviour
         //Restarts the game if space is clicked.
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            if (gameManager == null) // When on the menu screen.
+            if (gameManager == null) // When on the menu screen(No game manager in that scene).
             {
                 Play(); 
             }

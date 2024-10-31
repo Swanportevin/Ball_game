@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] halfpipePrefabs; // List with all halfpipe prefabs.
-    public GameObject halfpipeInstance; // latest instantiated halfpipe.
-    public GameObject Dollar; // dollar.
+    public GameObject halfpipeInstance; // Latest instantiated halfpipe.
+    public GameObject Dollar; // Dollar prefab.
     public Vector3 startSpawnPos; // Spawn Pos for the first couple halfpipes.
     public Vector3 SpawnPos; // Spawn Pos for all new halfpipes.
 
@@ -23,19 +23,20 @@ public class SpawnManager : MonoBehaviour
 
     private GameManager GameManager_script;
     public GameObject enemyPrefab;
-    public GameObject MovingEnemy;
+    public GameObject MovingEnemy; // Moving enemy prefab.
     
 
 
     void Start()
     {
-        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Get the game manager script.
         halfpipeInstance = SpawnStartHalfpipe(0f); // Sets the first halfpipe as the first instance.
 
         // Calculates the length of the first halfpipe.
         instanceRenderer = halfpipeInstance.GetComponent<MeshRenderer>();
         objectLength = instanceRenderer.bounds.size.z;
 
+        // Spawn the first halfpipes.
         SpawnStartHalfpipe(objectLength);
         SpawnStartHalfpipe(2*objectLength);
         halfpipeInstance = SpawnStartHalfpipe(3 * objectLength); // Sets last start halfpipe as the latest instance.
@@ -62,6 +63,7 @@ public class SpawnManager : MonoBehaviour
 
     GameObject SpawnStartHalfpipe(float objectLength)
     {
+        // Spawn the first halfpipe.
         halfpipeInstance = Instantiate(halfpipePrefabs[0], new Vector3(startSpawnPos.x, startSpawnPos.y, startSpawnPos.z + objectLength), halfpipePrefabs[0].transform.rotation);
         return halfpipeInstance;
     }
@@ -75,7 +77,7 @@ public class SpawnManager : MonoBehaviour
         return halfpipeInstance;
     }
 
-    void SpawnObjects() // Spawns the enemies and dollars at variing positions.
+    void SpawnObjects() // Spawns random enemies and dollars at varying positions.
     {
         if (GameManager_script.isGameActive)
         {

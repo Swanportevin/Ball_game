@@ -18,9 +18,6 @@ public class ObjectMovement : MonoBehaviour
     private float spinSpeed = -250.0f; // The speed for the rotation of the dollars.
 
     
-
-
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -30,7 +27,6 @@ public class ObjectMovement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Moves the halfpipes.
@@ -38,7 +34,7 @@ public class ObjectMovement : MonoBehaviour
         {
             transform.Translate(Vector3.back * Time.deltaTime * GameManager_script.speed);
         }
-        // moves the ducks.
+        // Moves the ducks.
         if (gameObject.CompareTag("Enemy"))
         {
             transform.Translate(Vector3.down * Time.deltaTime * GameManager_script.speed);

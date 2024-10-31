@@ -12,17 +12,14 @@ public class DestroyOutOfBounds : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip gameOverSound;
 
-    // Start is called before the first frame update
     void Start()
     {
-
-        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        GameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Get the game manager script.
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < behindBound) // Deletes objects behind the camera.
+        if (transform.position.z < behindBound || transform.position.y<-21) // Deletes objects behind the camera and falling objects.
         {
             Destroy(gameObject);
         }
