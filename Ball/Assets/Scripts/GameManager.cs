@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive = true;
 
     public float speed = 40.0f;
+    public float startSpeed = 30.0f;
     public static float highscore;
     public float score;
     private float time = 0.0f;
@@ -33,7 +34,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("highscore", highscore); // Set the highscore in the playerprefs to save it.
         SpawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         time = 0;
-        highscore = PlayerPrefs.GetFloat ("highscore", highscore); // Saves the highscore and keeps it for every new session.
+        highscore = PlayerPrefs.GetFloat("highscore", highscore); // Saves the highscore and keeps it for every new session.
+        startSpeed = PlayerPrefs.GetFloat("speed", startSpeed);
     }
 
     void Update()
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetFloat("highscore", highscore);
             }
             // Speed converges against 120.
-            speed = 40 + (80 * time * time - time) / (time * time + 9000);
+            speed = startSpeed + (80 * time * time - time) / (time * time + 9000);
 
         }
         //Blinking Play Again text if the game is over.
