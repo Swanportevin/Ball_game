@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier = 1.5f; // Variable to optimize gravity physics.
 
     private GameManager GameManager_script;
+    private WallGlitching WallGlitching_script;
 
     public Vector3 contactpoint;
     public Vector3 OrtogonalVector;
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.Find("halfpipeRiver(Clone)") != null)
+        {
+            WallGlitching_script = GameObject.Find("halfpipeRiver(Clone)").GetComponent<WallGlitching>();
+        }
         //Debug.Log("Contact Point: " + contactpoint);
         
         // Steering of the ball.
@@ -43,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             //Calculating the movement vector
             OrtogonalVector = Vector3.Cross((contactpoint - transform.position), new Vector3(0, 0, 1)).normalized;
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) && !WallGlitching_script.isWallglitching)
                 {
                     rigidBody.AddForce(-OrtogonalVector * speed);//Vector3.right
 
