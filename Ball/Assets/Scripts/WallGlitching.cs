@@ -12,9 +12,7 @@ public class WallGlitching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isWallglitching = false;
         PlayerController_script = GameObject.Find("Player").GetComponent<PlayerController>();
-        
     }
 
 private void OnCollisionEnter(Collision player){

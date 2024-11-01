@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private GameManager GameManager_script;
     private WallGlitching WallGlitching_script;
+    private bool WallGlitchingBool = false;
 
     public Vector3 contactpoint;
     public Vector3 OrtogonalVector;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         {
             // Get the WallGlitching script
             WallGlitching_script = GameObject.Find("halfpipeRiver(Clone)").GetComponent<WallGlitching>();
+            WallGlitchingBool = WallGlitching_script.isWallglitching;
         }
         
         // Steering of the ball.
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
             // Calculating the movement vector, tangent of the contact point on the pipe.
             OrtogonalVector = Vector3.Cross((contactpoint - transform.position), new Vector3(0, 0, 1)).normalized;
             // Desable turning right if the ball is glithing through the wall.
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) && !WallGlitching_script.isWallglitching) 
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) && !WallGlitchingBool)
                 {
                     // Add force to the right.
                     rigidBody.AddForce(-OrtogonalVector * speed);
