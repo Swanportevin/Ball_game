@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreText2: {fileID: 0}
   speedSlider: {fileID: 0}
+  refreshButton: {fileID: 0}
 --- !u!1001 &405451450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -705,7 +706,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785218803}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 973549bc36c26c942a7c32115cf1b53c, type: 3}
   m_Name: 
@@ -1734,6 +1735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 1
   speed: 40
+  startSpeed: 30
   score: 0
   DollarScore: 0
   scoreText: {fileID: 1035704874}

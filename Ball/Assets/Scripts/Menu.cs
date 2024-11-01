@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Search;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,6 @@ public class Menu : MonoBehaviour
     private float highscore; // Contains the highscore to show on the menu screen.
 
     public Slider speedSlider; // GameObject of the slider.
-    public Button refreshButton;
     private float startSpeed = 30.0f;
 
     private GameManager gameManager;
@@ -84,12 +84,23 @@ public class Menu : MonoBehaviour
         
     }
 
-    public void Refresh() // Refresh Button sets the slider to the correct value. Other methods failed because unity doesn't wait until a scene is loaded.
+    public void OnEnable() // and OnDisable() Needed to activate and deactivate sceneLoaded to avoid issues.
     {
-        refreshButton.gameObject.SetActive(false);
-        speedSlider.value = PlayerPrefs.GetFloat("speed", startSpeed);
-        speedSlider.gameObject.SetActive(true);
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // Gets called when a scene is done loading. Needed because LoadScene only finishes in the next frame and that caused errors.
+    public void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode) // .Scene is referenced in two modules, specification UnityEngine.SceneManagement is needed.
+    {
+        if (scene.buildIndex == 2)
+        {
+            speedSlider.value = PlayerPrefs.GetFloat("speed", startSpeed);
+        }
+    }
+
+    public void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 }
